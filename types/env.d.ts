@@ -1,0 +1,18 @@
+declare namespace Cloudflare {
+  interface Env {
+    DB: D1Database;
+    META: KVNamespace;
+    TEST_MIGRATIONS: Parameters<
+      typeof import("cloudflare:test").applyD1Migrations
+    >[1];
+  }
+
+  interface GlobalProps {
+    mainModule: typeof import("../src/index");
+  }
+}
+
+interface Env {
+  DB: D1Database;
+  META: KVNamespace;
+}
