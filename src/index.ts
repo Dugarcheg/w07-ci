@@ -20,6 +20,13 @@ env: Env
 ): Promise<Response> {
 const url = new URL(request.url);
 const path = url.pathname;
+if (request.method === "GET" && path === "/health") {
+      return Response.json({
+        status: "ok",
+        service: "global-event-ticket-reservation",
+        version: "week9-v1"
+      });
+    }
 // GET /events
 if (request.method === "GET" && path === "/events") {
 const result = await env.DB.prepare(
